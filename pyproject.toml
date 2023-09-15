@@ -1,0 +1,53 @@
+[build-system]
+requires = [
+    # First version to support pyproject.toml configs
+    "setuptools>=61.0.0",
+    "setuptools-rust>=1.7.0",
+]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pyo3-playground"
+version = "0.0.0"
+authors = [
+    { name = "Max Carrara", email = "m.carrara@proxmox.com" }
+]
+description = "This package is used to experiment with PyO3."
+readme = "README.md"
+requires-python = ">=3.7"
+classifiers = [
+    "Operating System :: POSIX",
+    "Operating System :: POSIX :: Linux",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: Implementation :: CPython",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/Aequitosh/pyo3-playground"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["playground"]
+
+[[tool.setuptools-rust.ext-modules]]
+# Last part of the name needs to match lib.name in Cargo.toml
+target = "playground._lib"
+
+path = "src/rust/Cargo.toml"
+py_limited_api = true
+rust-version = ">=1.56.0"
+
+[tool.black]
+line-length = 79
+target-version = ["py37"]
+

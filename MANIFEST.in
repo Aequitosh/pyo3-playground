@@ -1,0 +1,12 @@
+include README.md
+include LICENSE
+
+include pyproject.toml
+include-recursive src py.typed *.pyi
+
+recursive-include src/rust Cargo.toml Cargo.lock *.rs
+recursive-include tests *.py
+
+exclude src/rust/target
+recursive-exclude src/rust/target *
+
