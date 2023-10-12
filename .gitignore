@@ -3,6 +3,7 @@ _build/
 build/
 dist/
 target/
+Cargo.lock
 
 venv*
 .venv*
@@ -12,4 +13,7 @@ venv*
 .eggs/
 *.py[cdo]
 *.so
+
+.cache/
+compile_commands.json
 
