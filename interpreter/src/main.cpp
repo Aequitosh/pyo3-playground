@@ -79,8 +79,8 @@ int main(int argc, char *argv[]) {
   PyGILState_Release(gil_state);
 
   std::cout << "Running example program:\n";
-  const char *py_test_prog = "from time import time, ctime\n"
-                             "print('Today is', ctime(time()))\n";
+  const char *py_test_prog = "import playground\n"
+    "print(playground.hello_world())\n";
 
   PyRun_SimpleString(py_test_prog);
 
