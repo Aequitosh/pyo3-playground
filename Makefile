@@ -101,6 +101,11 @@ clean-interpreter:
 	cd interpreter && bash clean.sh
 
 
-compile_commands.json: .test-venv clean-interpreter
+.PHONY: compile_commands.json
+compile_commands.json: interpreter/compile_commands.json
+
+interpreter/compile_commands.json: .test-venv clean-interpreter
 	bear -- $(MAKE) interpreter
+	cp -a compile_commands.json interpreter/compile_commands.json
+	rm compile_commands.json
 
