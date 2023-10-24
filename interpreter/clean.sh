@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
-rm -r .cache build compile_commands.json &> /dev/null; exit 0
+rm -r .cache build &> /dev/null; exit 0
 
