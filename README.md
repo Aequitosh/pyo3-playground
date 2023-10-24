@@ -44,6 +44,7 @@ now, they've only been tested on my machine.
 
 * Be on some Linux distribution of your choice (WSL should probably work too)
 * [Python](https://www.python.org/), preferably via [`pyenv`](https://www.python.org/)
+* [GNU Make](https://www.gnu.org/software/make/)
 * [`cmake`](https://cmake.org/) (optionally with `ctest`)
 * [Rust](https://rustup.rs/)
 * Make sure you've cloned this repository with its submodules:
@@ -64,11 +65,13 @@ might or might not work. Good luck!
     I highly recommend using [pyenv](https://github.com/pyenv/pyenv) to install
     your desired Python version in order to not mess with your system's Python
     installation.
+
 02. Congratulations, you can now build the `playground` module from the repo's directory:
     ```bash
-    pip install -e .
+    make install
     ```
     Yeah, it's suprisingly easy, I know!
+
 03. To test the module, import it in the `python` REPL:
     ```py
     >>> import playground
@@ -76,38 +79,40 @@ might or might not work. Good luck!
     'Hello, World!'
     ```
 
-After confirming that the module builds and runs correctly, you may also build
-the C++ application:
+04. After confirming that the module builds and runs correctly, you may also
+    build the C++ application:
+    ```bash
+    make interpreter-debug
+    ```
+    ```bash
+    make interpreter-release
+    ```
+    Or, to build both:
+    ```bash
+    make interpreter
+    ```
 
-04. Enter the `interpreter/` directory
+05. Once your desired targets are build successfully, you should be able to run
+    either of them:
     ```bash
-    cd interpreter
-    ```
-05. Configure `cmake`:
-    ```bash
-    ./configure.sh
-    ```
-06. Once everything's configured successfully, you should be able to build and
-    run in `debug` and `release` each:
-    ```bash
-    ./debug.sh && ./build/debug/test-interpreter
+    ./interpreter/build/debug/test-interpreter
     ```
     ```bash
-    ./release.sh && ./build/release/test-interpreter
+    ./interpreter/build/release/test-interpreter
     ```
 
 Once you completed the above steps and everything's built, can also run the
 (currently not very useful) tests for either build variant. The tests are
 built automatically for both builds.
 
-07. Run the test executable directly:
+06. Run the test executable directly:
     ```bash
     ./build/debug/tests/run_tests
     ```
     ```bash
     ./build/release/tests/run_tests
     ```
-08. You may also run the tests with `ctest`:
+07. You may also run the tests with `ctest`:
     ```bash
     ctest --test-dir ./build/debug
     ```
