@@ -20,3 +20,11 @@ name = "_lib"
 
 crate-type = ["cdylib"]
 
+# Local path overrides
+# Use this to work with the PyO3 source directly. Very useful if you have a
+# local development version of PyO3 at hand that you're tinkering around with.
+#
+# NOTE: When modifying this, be sure to run `cargo update` afterwards!
+[patch.crates-io]
+# pyo3 = { path = "../../../Aequitosh__pyo3" }
+

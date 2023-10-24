@@ -115,6 +115,27 @@ built automatically for both builds.
     ctest --test-dir ./build/release
     ```
 
+### Working with the PyO3 source locally
+
+If you're working on the PyO3 sources yourself and want to test your changes
+using this repository, you can point `cargo` to your local sources:
+
+01. Enter the `src/rust/` directory
+    ```bash
+    cd src/rust/
+    ```
+02. Uncomment the line regarding `pyo3` in `Cargo.toml` and change the `path`
+    to point to the directory of your local `pyo3` sources
+03. Run `cargo update`
+04. `cargo` should now have updated all PyO3-related dependencies accordingly.
+    You can then rebuild the Python module like above:
+    ```bash
+    cd ../..
+    ```
+    ```bash
+    pip install -e .
+    ```
+
 ## License
 
 Even though this is just a (more or less literal) playground for PyO3,
